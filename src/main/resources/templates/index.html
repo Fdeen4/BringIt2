@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/general::headfragment">
+    <meta charset="UTF-8">
+<body>
+<nav th:replace="fragments/layout::theNavBar">
+
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-2" th:each="eachItem:${items}">
+            <div>
+                <p th:text="${eachItem.description}"></p>
+                <a th:href="@{/interested(id=${eachItem.id})}">I'm interested!</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---->
+<th:block th:replace="fragments/general::footfragment"></th:block>
+</body>
+</html>

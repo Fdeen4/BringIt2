@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/general::headfragment">
+    <meta charset="UTF-8">
+<body>
+<nav th:replace="fragments/layout::theNavBar">
+</nav>
+<div class="continer">
+    <div th:each="eachMessage :${myMessages}">
+        <p th:text="${eachMessage.text}"></p>
+        <p th:text="${eachMessage.sender.username}"></p>
+        <a th:href="@{/changemessagestatus(id=${eachMessage.id})}" th:text="${eachMessage.read}?'Read':'Mark as unread'"></a>
+
+    </div>
+</div>
+
+<!---->
+<th:block th:replace="fragments/general::footfragment"></th:block>
+</body>
+</html>
+

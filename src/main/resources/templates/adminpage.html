@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/general::headfragment">
+    <meta charset="UTF-8">
+</head>
+<body>
+<nav th:replace="fragments/layout::theNavBar">
+
+</nav>
+<div class="container">
+    <div th:each="eachuser:${users}">
+
+        <div th:if="${currentUser.username}!=${eachuser.username}">
+            <p th:text="${eachuser.username}"></p>
+
+            <span th:if="!${eachuser.suspended}">
+                <a th:href="@{/suspend(userid=${eachuser.id})}">Suspend User</a>
+            </span>
+
+            <span th:if="${eachuser.suspended}">
+                <a th:href="@{/reinstate(userid=${eachuser.id})}">Reinstate User</a>
+            </span>
+
+           [ <span th:each="eachRole:${eachuser.roles}" th:text="${eachRole.name}+' '"></span>]
+
+        </div>
+    </div>
+</div>
+<!---->
+<th:block th:replace="fragments/general::footfragment"></th:block>
+</body>
+</html>

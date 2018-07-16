@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/general::headfragment">
+    <meta charset="UTF-8">
+<body>
+<nav th:replace="fragments/layout::theNavBar">
+
+</nav>
+<div class="container">
+    <div class="h1 text-center" sec:authorize="hasAuthority('SUSPENDED')">Your account has been suspended. Contact the administrator.</div>
+    <div class="h1 text-center" sec:authorize="!hasAuthority('SUSPENDED')">You are not authorized to access this page</div>
+
+</div>
+
+<!---->
+<th:block th:replace="fragments/general::footfragment"></th:block>
+</body>
+</html>

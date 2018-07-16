@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/general::headfragment">
+    <meta charset="UTF-8">
+<body>
+<nav th:replace="fragments/layout::theNavBar">
+
+</nav>
+<div class="container">
+   <div th:each="eachItem:${items}">
+       <p th:text="${eachItem.description}"></p>
+       <a th:href="@{/changestatus(id=${eachItem.id})}" th:text="${eachItem.available}?'Available':'Sold'"></a>
+       <a th:href="@{/changelisting(id=${eachItem.id})}" th:text="${eachItem.listed}?'Listed':'De-listed'"></a>
+   </div>
+</div>
+<th:block th:replace="fragments/general::footfragment"></th:block>
+</body>
+</html>

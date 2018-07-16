@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--List items to display -->
+    <!--Use cards here -->
+<form>
+    <div class="container">
+        <div class="row" th:fragment="showitems(items)">
+            <div class="col-1" th:each="eachItem:${items}">
+                <div>
+                    <p th:text="${eachItem.description}"></p>
+
+                        <input type="hidden" th:field="${eachItem.id}">
+                        <!--<button th:formaction="@{/changestatus(id=${eachItem.id})}" class="btn btn-default" th:text="${eachItem.available}?'Available':'Sold'"></button>-->
+                    <a th:href="@{/changestatus(id=${eachItem.id})}" th:text="${eachItem.available}?'Available':'Sold'"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!---->
+</body>
+</html>
